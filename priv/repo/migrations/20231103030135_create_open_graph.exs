@@ -1,11 +1,11 @@
-defmodule Luna.Repo.Migrations.CreateOpenGraph do
+defmodule Luna.Repo.Migrations.CreateGraph do
   use Ecto.Migration
 
   def change do
-    create table(:open_graph) do
+    create table(:graph) do
       add :status, :string
-      add :url, :string
-      add :image_url, :string
+      add :url, :text
+      add :image_url, :text
 
       timestamps()
     end

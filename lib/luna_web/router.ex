@@ -17,9 +17,9 @@ defmodule LunaWeb.Router do
   scope "/", LunaWeb do
     pipe_through :browser
 
-    get "/", PageController, :home
-    get "/upload", UploadController, :index
-    post "/upload", UploadController, :create
+    # get "/", PageController, :home
+    get "/", UploadController, :index
+    post "/", UploadController, :create
   end
 
   # Other scopes may use custom stacks.

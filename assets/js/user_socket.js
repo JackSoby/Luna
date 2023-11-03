@@ -56,9 +56,25 @@ socket.connect()
 // Now that you are connected, you can join channels with a topic.
 // Let's assume you have a channel with a topic named `room` and the
 // subtopic is its id - in this case 42:
-let channel = socket.channel("room:42", {})
+let channel = socket.channel("open_graph_room:lobby", {})
 channel.join()
   .receive("ok", resp => { console.log("Joined successfully", resp) })
   .receive("error", resp => { console.log("Unable to join", resp) })
+
+  channel.on('open_graph_update', msg => {
+    var statusDiv = document.getElementsByClassName(`pending ${msg.id}`)[0];
+
+    if(statusDiv){
+      statusDiv.className = `${msg.status} ${msg.id}`
+      statusDiv.innerHTML = msg.status
+    }
+    
+    if(msg.status != "failed") { 
+      var imageDiv  = document.getElementsByClassName(`image ${msg.id}`)[0];
+      if(imageDiv){
+          imageDiv.innerHTML =`<img src="${msg.image_url}" >`;
+        }
+      }
+  })
 
 export default socket

@@ -35,9 +35,16 @@ defmodule Luna.OpenGraphManagementTest do
 
     test "update_open_graph/2 with valid data updates the open_graph" do
       open_graph = open_graph_fixture()
-      update_attrs = %{status: "some updated status", url: "some updated url", image_url: "some updated image_url"}
 
-      assert {:ok, %OpenGraph{} = open_graph} = OpenGraphManagement.update_open_graph(open_graph, update_attrs)
+      update_attrs = %{
+        status: "some updated status",
+        url: "some updated url",
+        image_url: "some updated image_url"
+      }
+
+      assert {:ok, %OpenGraph{} = open_graph} =
+               OpenGraphManagement.update_open_graph(open_graph, update_attrs)
+
       assert open_graph.status == "some updated status"
       assert open_graph.url == "some updated url"
       assert open_graph.image_url == "some updated image_url"
@@ -45,14 +52,20 @@ defmodule Luna.OpenGraphManagementTest do
 
     test "update_open_graph/2 with invalid data returns error changeset" do
       open_graph = open_graph_fixture()
-      assert {:error, %Ecto.Changeset{}} = OpenGraphManagement.update_open_graph(open_graph, @invalid_attrs)
+
+      assert {:error, %Ecto.Changeset{}} =
+               OpenGraphManagement.update_open_graph(open_graph, @invalid_attrs)
+
       assert open_graph == OpenGraphManagement.get_open_graph!(open_graph.id)
     end
 
     test "delete_open_graph/1 deletes the open_graph" do
       open_graph = open_graph_fixture()
       assert {:ok, %OpenGraph{}} = OpenGraphManagement.delete_open_graph(open_graph)
-      assert_raise Ecto.NoResultsError, fn -> OpenGraphManagement.get_open_graph!(open_graph.id) end
+
+      assert_raise Ecto.NoResultsError, fn ->
+        OpenGraphManagement.get_open_graph!(open_graph.id)
+      end
     end
 
     test "change_open_graph/1 returns a open_graph changeset" do

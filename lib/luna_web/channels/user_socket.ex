@@ -10,7 +10,7 @@ defmodule LunaWeb.UserSocket do
   # Uncomment the following line to define a "room:*" topic
   # pointing to the `LunaWeb.RoomChannel`:
   #
-  # channel "room:*", LunaWeb.RoomChannel
+  channel "open_graph_room:*", LunaWeb.OpenGraphRoomChannel
   #
   # To create a channel file, use the mix task:
   #
@@ -18,7 +18,6 @@ defmodule LunaWeb.UserSocket do
   #
   # See the [`Channels guide`](https://hexdocs.pm/phoenix/channels.html)
   # for further details.
-
 
   # Socket params are passed from the client and can
   # be used to verify and authenticate a user. After

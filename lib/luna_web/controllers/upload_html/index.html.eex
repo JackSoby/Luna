@@ -1,6 +1,6 @@
-<form action="/upload" method="post">
+<form action="/" method="post">
     <h1> <strong>Enter Url</strong></h1>
-    <input name="url" type="text" />
+    <input name="url" type="url" />
     <input type="hidden" name="_csrf_token" value="<%= @token %>">
     <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Submit</button>
 </form>
@@ -12,13 +12,18 @@
 <h2>
 
 <%= for open_graph <- @open_graphs do %>
-    <div class="open-graph"> 
+    <div id="<%= open_graph.id %>" class="open-graph"> 
         <div class="status">
             <strong>Status:</strong>
-            <p class="<%= open_graph.status %>"><%= open_graph.status %> </p>
+            <p class="<%= open_graph.status %> <%= open_graph.id %>"><%= open_graph.status %> </p>
         </div>
         <div>
             <%= open_graph.url %>
+        </div>
+        <div class="image <%= open_graph.id %>"> 
+            <%= if open_graph.image_url do %>
+                <img src="<%= open_graph.image_url %>" >
+            <%= end %>
         </div>
     </div>
 <% end %>
