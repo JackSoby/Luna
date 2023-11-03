@@ -1,0 +1,24 @@
+<form action="/upload" method="post">
+    <h1> <strong>Enter Url</strong></h1>
+    <input name="url" type="text" />
+    <input type="hidden" name="_csrf_token" value="<%= @token %>">
+    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Submit</button>
+</form>
+
+<h2 class="url-header">
+    <strong> 
+        Parsed Urls   
+    </strong>
+<h2>
+
+<%= for open_graph <- @open_graphs do %>
+    <div class="open-graph"> 
+        <div class="status">
+            <strong>Status:</strong>
+            <p class="<%= open_graph.status %>"><%= open_graph.status %> </p>
+        </div>
+        <div>
+            <%= open_graph.url %>
+        </div>
+    </div>
+<% end %>

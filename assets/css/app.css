@@ -1,0 +1,32 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* This file is for your main application CSS */
+
+.pending {
+    color: orange;
+    padding-left: 0.2cm;
+}
+
+.failed {
+    color: red;
+    padding-left: 0.2cm;
+}
+
+.success {
+    color: green;
+    padding-left: 0.2cm;
+}
+
+.status {
+    display: flex;
+}
+
+.open-graph {
+    margin-top: 0.5cm;
+}
+
+.url-header {
+    margin-top: 0.5cm;
+}
