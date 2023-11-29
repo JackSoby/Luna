@@ -1,5 +1,7 @@
 # Luna
 
+This is a simple Phoenix application that takes in an OpenGraph URL, saves its info to the DB, and updates the front end with the proper data once it has been processed in the backend. 
+
 To start your Phoenix server:
 
   * Run `mix setup` to install and setup dependencies
